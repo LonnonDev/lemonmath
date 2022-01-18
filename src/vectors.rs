@@ -67,6 +67,9 @@ impl<T> Vector<T> {
     /// ```
     /// use lemonmath::vectors::Vector;
     /// 
+    /// // Vector::new(Vector<T>, bool);
+    /// // Create a Vector from a list of numbers
+    /// // The bool is to determine if the vector is a column or row
     /// let x = Vector::new(vec![1.0, 2.0, 3.0, 4.0, 5.0], true);
     /// 
     /// assert_eq!(x.content, vec![1.0, 2.0, 3.0, 4.0, 5.0]);
