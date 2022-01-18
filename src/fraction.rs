@@ -59,7 +59,7 @@ use crate::helper::{GetDecimal, GCD};
 
 #[test]
 fn fraction_test() {
-    let x = Fraction::from_float(10.20449838982);
+    let x = Fraction::from_float(10.2044982);
     let y = Fraction::from_float(1.0);
     println!("{}", x);
 }
