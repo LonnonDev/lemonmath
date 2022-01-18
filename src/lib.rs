@@ -14,13 +14,6 @@ and I wanted to create the best mathematics library I could.
 * [Fraction](https://docs.rs/lemonmath/0.1.0/lemonmath/fraction/index.html)
 * [Helper](https://docs.rs/lemonmath/0.1.0/lemonmath/helper/index.html)
 
-## Installation
-
-```toml
-[dependencies]
-lemonmath = "0.1.0"
-```
-
 ## Usage
 
 There is fractions, vectors, and matrices.
