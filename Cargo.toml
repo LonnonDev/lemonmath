@@ -2,10 +2,10 @@
 name = "lemonmath"
 description = "A math library"
 authors = ["LonnonjamesD"]
-version = "0.1.1"
+version = "0.1.2"
 edition = "2021"
 license = "GPL-3.0"
-repository = "LonnonjamesD/lemonmath"
+repository = "https://github.com/LonnonDev/lemonmath"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
