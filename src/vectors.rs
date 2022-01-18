@@ -1,3 +1,43 @@
+/*!
+# Vectors
+Math Vectors;
+
+# Examples
+```rust
+use lemonmath::vectors::Vector;
+
+// Create Vector from a list of numbers
+let x = Vector::new(vec![1, 2, 3], true);
+
+assert_eq!(x.content, vec![1.0, 2.0, 3.0, 4.0, 5.0]);
+
+// Push a new element to the vector
+let mut vector = Vector::new(vec![1.0, 2.0, 3.0, 4.0, 5.0], true);
+
+vector.push(6.0);
+
+assert_eq!(vector.content, vec![1.0, 2.0, 3.0, 4.0, 5.0, 6.0]);
+
+// Transpose example
+let mut vector1 = Vector::new(vec![1.0, 2.0, 3.0, 4.0, 5.0], true);
+let vector2 = Vector::new(vec![1.0, 2.0, 3.0, 4.0, 5.0], false);
+
+vector1.transpose();
+
+assert_eq!(format!("{}", vector1), format!("{}", vector2));
+
+// Display Trait
+let x = Vector::new(vec![1.0, 2.0, 3.0, 4.0, 5.0], true);
+
+assert_eq!(format!("{}", x), "[ 1.0 2.0 3.0 4.0 5.0 ]");
+
+// Dot Product
+let vector1 = Vector::new(vec![1.0, 2.0, 3.0, 4.0, 5.0], true);
+let vector2 = Vector::new(vec![1.0, 2.0, 3.0, 4.0, 5.0], false);
+
+assert_eq!(vector1 * vector2, 55.0);
+```
+*/
 
 use std::{fmt::Display, ops::{Mul, AddAssign}};
 
@@ -22,6 +62,15 @@ pub struct Vector<T> {
 
 impl<T> Vector<T> {
     /// Create the Vector  
+    /// 
+    /// # Examples
+    /// ```
+    /// use lemonmath::vectors::Vector;
+    /// 
+    /// let x = Vector::new(vec![1.0, 2.0, 3.0, 4.0, 5.0], true);
+    /// 
+    /// assert_eq!(x.content, vec![1.0, 2.0, 3.0, 4.0, 5.0]);
+    /// ```
     pub fn new(content: Vec<T>, column_or_row: bool) -> Self {
         return Vector { 
             content: content, 
@@ -30,16 +79,49 @@ impl<T> Vector<T> {
         
     }
     /// Push new values into the vector
+    /// 
+    /// # Examples
+    /// ```
+    /// use lemonmath::vectors::Vector;
+    /// 
+    /// let mut vector = Vector::new(vec![1.0, 2.0, 3.0, 4.0, 5.0], true);
+    /// 
+    /// vector.push(6.0);
+    /// 
+    /// assert_eq!(vector.content, vec![1.0, 2.0, 3.0, 4.0, 5.0, 6.0]);
+    /// ```
     pub fn push(&mut self, value: T) {
         self.content.push(value);
     }
     /// Switch between column and row vector
+    /// 
+    /// # Examples
+    /// ```
+    /// use lemonmath::vectors::Vector;
+    /// 
+    /// let mut vector1 = Vector::new(vec![1.0, 2.0, 3.0, 4.0, 5.0], true);
+    /// let vector2 = Vector::new(vec![1.0, 2.0, 3.0, 4.0, 5.0], false);
+    /// 
+    /// vector1.transpose();
+    /// 
+    /// assert_eq!(format!("{}", vector1), format!("{}", vector2));
+    /// ```
     pub fn transpose(&mut self) {
         self.column_or_row = !self.column_or_row;
     }
 }
 
 impl<T: Display> Display for Vector<T> {
+    /// Display the vector
+    /// 
+    /// # Examples
+    /// ```
+    /// use lemonmath::vectors::Vector;
+    /// 
+    /// let x = Vector::new(vec![1.0, 2.0, 3.0, 4.0, 5.0], true);
+    /// 
+    /// assert_eq!(format!("{}", x), "[ 1.0 2.0 3.0 4.0 5.0 ]");
+    /// ```
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         let mut final_str = String::new();
         if self.column_or_row == true {
@@ -77,6 +159,17 @@ impl<T: Display> Display for Vector<T> {
 impl<T: AddAssign + Default + Mul + Mul<Output = T> + Copy + Display> Mul for Vector<T>{
     type Output = T;
 
+    /// Dot Product
+    /// 
+    /// # Examples
+    /// ```
+    /// use lemonmath::vectors::Vector;
+    /// 
+    /// let vector1 = Vector::new(vec![1.0, 2.0, 3.0, 4.0, 5.0], true);
+    /// let vector2 = Vector::new(vec![1.0, 2.0, 3.0, 4.0, 5.0], false);
+    /// 
+    /// assert_eq!(vector1 * vector2, 55.0);
+    /// ```
     fn mul(self, other: Self) -> Self::Output {
         let mut result = T::default();
         if self.content.len() != other.content.len() {
