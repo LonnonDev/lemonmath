@@ -39,7 +39,7 @@ assert_eq!(vector1 * vector2, 55.0);
 ```
 */
 
-use std::{fmt::Display, ops::{Mul, AddAssign}};
+use std::{fmt::Display, ops::{Mul, AddAssign, Add, Sub, Div}};
 
 #[allow(unused_imports)]
 use crate::helper::VecToFraction;
@@ -156,6 +156,52 @@ impl<T: Display> Display for Vector<T> {
     }
 }
 
+impl<T: Add + Add<Output = T> + Copy> Add for Vector<T> {
+    type Output = Self;
+    
+    /// Add two vectors
+    /// 
+    /// # Examples
+    /// ```
+    /// use lemonmath::vectors::Vector;
+    /// 
+    /// let vector1 = Vector::new(vec![1.0, 2.0, 3.0, 4.0, 5.0], true);
+    /// let vector2 = Vector::new(vec![1.0, 2.0, 3.0, 4.0, 5.0], true);
+    /// 
+    /// assert_eq!(vector1 + vector2, Vector::new(vec![2.0, 4.0, 6.0, 8.0, 10.0], true));
+    /// ```
+    fn add(self, other: Self) -> Self {
+        let mut result = Vector::new(vec![], self.column_or_row);
+        for x in 0..self.content.len() {
+            result.content.push(self.content[x] + other.content[x]);
+        }
+        return result;
+    }
+}
+
+impl<T: Sub + Sub<Output = T> + Copy> Sub for Vector<T> {
+    type Output = Self;
+    
+    /// Subtract two vectors
+    /// 
+    /// # Examples
+    /// ```
+    /// use lemonmath::vectors::Vector;
+    /// 
+    /// let vector1 = Vector::new(vec![1.0, 2.0, 3.0, 4.0, 5.0], true);
+    /// let vector2 = Vector::new(vec![1.0, 21.0, 56.0, 4.00, 52.0], true);
+    /// 
+    /// assert_eq!(vector1 - vector2, Vector::new(vec![0.0, -19.0, -53.0, 0.0, -47.0], true));
+    /// ```
+    fn sub(self, other: Self) -> Self {
+        let mut result = Vector::new(vec![], self.column_or_row);
+        for x in 0..self.content.len() {
+            result.content.push(self.content[x] - other.content[x]);
+        }
+        return result;
+    }
+}
+
 impl<T: AddAssign + Default + Mul + Mul<Output = T> + Copy + Display> Mul for Vector<T>{
     type Output = T;
 
@@ -181,6 +227,29 @@ impl<T: AddAssign + Default + Mul + Mul<Output = T> + Copy + Display> Mul for Ve
             }
         } else {
             panic!("Can't multiply two vectors with the same orientation");
+        }
+        return result;
+    }
+}
+
+impl<T: From<u8> + Mul + Div + Div<Output = T> + Mul<Output = T> + Copy> Div for Vector<T> {
+    type Output = Self;
+
+    /// Divide a vector by a vector
+    /// 
+    /// # Examples
+    /// ```
+    /// use lemonmath::vectors::Vector;
+    /// 
+    /// let vector1 = Vector::new(vec![1.0, 2.0, 3.0, 4.0, 5.0], true);
+    /// let vector2 = Vector::new(vec![2.0, 3.0, 4.0, 5.0, 6.0], false);
+    ///
+    /// assert_eq!(vector1 / vector2, Vector::new(vec![0.5, 0.6666666666666666, 0.75, 0.8, 0.8333333333333334], true)); 
+    /// ```
+    fn div(self, other: Self::Output) -> Self::Output {
+        let mut result = Vector::new(vec![], self.column_or_row);
+        for x in 0..self.content.len() {
+            result.content.push(self.content[x] * 1u8.into()/other.content[x]);
         }
         return result;
     }

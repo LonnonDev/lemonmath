@@ -9,10 +9,10 @@ and I wanted to create the best mathematics library I could.
 
 ## Features
 
-* [Matrices](https://docs.rs/lemonmath/0.1.0/lemonmath/matrices/index.html)
-* [Vectors](https://docs.rs/lemonmath/0.1.0/lemonmath/vectors/index.html)
-* [Fraction](https://docs.rs/lemonmath/0.1.0/lemonmath/fraction/index.html)
-* [Helper](https://docs.rs/lemonmath/0.1.0/lemonmath/helper/index.html)
+* [Matrices](https://docs.rs/lemonmath/latest/lemonmath/matrices/index.html)
+* [Vectors](https://docs.rs/lemonmath/latest/lemonmath/vectors/index.html)
+* [Fraction](https://docs.rs/lemonmath/latest/lemonmath/fraction/index.html)
+* [Helper](https://docs.rs/lemonmath/latest/lemonmath/helper/index.html)
 
 ## Usage
 
