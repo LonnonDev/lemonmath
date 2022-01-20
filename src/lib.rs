@@ -1,3 +1,4 @@
+#![allow(unused_imports)]
 /*!
 # LemonMath
 LemonMath is a Rust library for mathematics.

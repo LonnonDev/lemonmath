@@ -1,3 +1,5 @@
+cargo-features = ["strip"]
+
 [package]
 name = "lemonmath"
 description = "A math library"
@@ -7,6 +9,18 @@ edition = "2021"
 license = "GPL-3.0"
 repository = "https://github.com/LonnonDev/lemonmath"
 
+
+
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
+[profile.release]
+strip = true  # Automatically strip symbols from the binary.
+codegen-units = 1
+panic = "abort"
+
 [dependencies]
+
+[features]
+no_fraction_traits = ["no_fraction_display_trait", "no_fraction_math_traits"]
+no_fraction_display_trait = []
+no_fraction_math_traits = []

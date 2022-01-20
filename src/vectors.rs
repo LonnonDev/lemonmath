@@ -41,7 +41,6 @@ assert_eq!(vector1 * vector2, 55.0);
 
 use std::{fmt::Display, ops::{Mul, AddAssign, Add, Sub, Div}};
 
-#[allow(unused_imports)]
 use crate::helper::VecToFraction;
 
 #[test]

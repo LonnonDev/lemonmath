@@ -203,6 +203,7 @@ impl Fraction {
     }
 }
 
+#[cfg(not(feature = "no_fraction_math_traits"))]
 impl Add for Fraction {
     type Output = Self;
     
@@ -222,6 +223,7 @@ impl Add for Fraction {
     }
 }
 
+#[cfg(not(feature = "no_fraction_math_traits"))]
 impl Sub for Fraction {
     type Output = Self;
     
@@ -241,6 +243,7 @@ impl Sub for Fraction {
     }
 }
 
+#[cfg(not(feature = "no_fraction_math_traits"))]
 impl Mul for Fraction {
     type Output = Self;
 
@@ -260,6 +263,7 @@ impl Mul for Fraction {
     }
 }
 
+#[cfg(not(feature = "no_fraction_math_traits"))]
 impl Div for Fraction {
     type Output = Self;
     
@@ -279,6 +283,7 @@ impl Div for Fraction {
     }
 }
 
+#[cfg(not(feature = "no_fraction_display_trait"))]
 impl Display for Fraction {
     /// This displays the fraction as a string
     /// 
@@ -299,6 +304,7 @@ impl Display for Fraction {
     }
 }
 
+#[cfg(not(feature = "no_fraction_math_traits"))]
 impl AddAssign for Fraction {
     /// This adds two fractions together and then assigns the result to the original fraction
     /// 
@@ -317,6 +323,7 @@ impl AddAssign for Fraction {
     }
 }
 
+#[cfg(not(feature = "no_fraction_math_traits"))]
 impl SubAssign for Fraction {
     /// This subtracts two fractions and then assigns the result to the original fraction
     /// 
@@ -335,6 +342,7 @@ impl SubAssign for Fraction {
     }
 }
 
+#[cfg(not(feature = "no_fraction_math_traits"))]
 impl MulAssign for Fraction {
     /// This multiplies two fractions and then assigns the result to the original fraction
     /// 
@@ -353,6 +361,7 @@ impl MulAssign for Fraction {
     }
 }
 
+#[cfg(not(feature = "no_fraction_math_traits"))]
 impl DivAssign for Fraction {
     /// This divides two fractions and then assigns the result to the original fraction
     /// 
@@ -371,6 +380,7 @@ impl DivAssign for Fraction {
     }
 }
 
+#[cfg(not(feature = "no_fraction_math_traits"))]
 impl Default for Fraction {
     /// This returns a fraction with a numerator of 0 and a denominator of 1
     /// 
