@@ -401,6 +401,16 @@ impl Default for Fraction {
 impl Neg for Fraction {
     type Output = Self;
 
+    /// This negates a fraction
+    /// 
+    /// # Examples
+    /// ```
+    /// use lemonmath::fraction::Fraction;
+    /// 
+    /// let x = Fraction::new(1, 2);
+    /// 
+    /// assert_eq!(-x, Fraction::new(-1, 2));
+    /// ```
     fn neg(self) -> Self::Output {
         return Fraction::new(-self.numerator, self.denominator);
     }
