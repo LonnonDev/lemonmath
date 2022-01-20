@@ -53,7 +53,7 @@ assert_eq!(x, Fraction::new(5, 1));
 ```
 */
 
-use std::{ops::{Add, Sub, Mul, Div, AddAssign, DivAssign, SubAssign, MulAssign}, fmt::{Formatter, Display}};
+use std::{ops::{Add, Sub, Mul, Div, AddAssign, DivAssign, SubAssign, MulAssign, Neg}, fmt::{Formatter, Display}};
 
 use crate::helper::{GetDecimal, GCD};
 
@@ -394,5 +394,14 @@ impl Default for Fraction {
     /// ```
     fn default() -> Self {
         return Fraction::new(0, 1);
+    }
+}
+
+#[cfg(not(feature = "no_fraction_math_traits"))]
+impl Neg for Fraction {
+    type Output = Self;
+
+    fn neg(self) -> Self::Output {
+        return Fraction::new(-self.numerator, self.denominator);
     }
 }
