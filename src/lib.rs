@@ -1,5 +1,4 @@
 #![allow(unused_imports)]
-#![no_main]
 
 /*!
 # LemonMath
