@@ -182,7 +182,7 @@ impl Fraction {
     }
 
     pub fn sqrt(&self) -> Self {
-        return self.mul(Fraction::new(self.denominator, self.numerator));
+        return Fraction::from_float((self.denominator as f64).sqrt()) / Fraction::from_float((self.numerator as f64).sqrt());
     }
     /// This reduces the fraction to its lowest terms
     /// 
