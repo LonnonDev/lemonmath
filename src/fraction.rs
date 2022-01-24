@@ -59,9 +59,9 @@ use crate::helper::{GetDecimal, GCD};
 
 #[test]
 fn fraction_test() {
-    let x = Fraction::from_float(10.2044982);
+    let x = Fraction::from_float(4.0);
     let y = Fraction::from_float(1.0);
-    println!("{}", x);
+    println!("{}", x.sqrt());
 }
 
 /// A struct to replace floats
@@ -179,6 +179,10 @@ impl Fraction {
     /// ```
     pub fn sub_number(&self, other: Self) -> Self {
         return self.add(Fraction::new(-other.numerator, other.denominator));
+    }
+
+    pub fn sqrt(&self) -> Self {
+        return self.mul(Fraction::new(self.denominator, self.numerator));
     }
     /// This reduces the fraction to its lowest terms
     /// 
